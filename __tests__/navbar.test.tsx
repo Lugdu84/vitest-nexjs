@@ -4,7 +4,7 @@ import { describe, it, expect } from "vitest"
 import Navbar from '../components/navbar';
 
 const user = {
-    name: "test"
+    name: "John Doe"
 }
 
 describe('Navbar', () => {
