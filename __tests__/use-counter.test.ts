@@ -3,7 +3,8 @@ import { test, expect, describe } from "vitest"
 import { useCounter } from "../hooks/counter"
 
 describe("useCounter with default value (0)", () => {
-     const { result } = renderHook(() => useCounter())
+    
+    const { result } = renderHook(() => useCounter())
     test("should increment", () => {
         act(() => {
             result.current.increment()
