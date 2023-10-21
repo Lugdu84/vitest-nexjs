@@ -8,6 +8,9 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'jsdom',
+    // setupFiles: "./setupTest.js",
+    env: {
+      IS_REACT_ACT_ENVIRONMENT: 'true',
+    },
   },
-
 })
