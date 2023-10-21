@@ -1,50 +1,60 @@
-import { test, expect, describe } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { test, expect, describe, afterAll, beforeAll } from 'vitest'
+import { render, screen, cleanup } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import '@testing-library/jest-dom/vitest'
 import Counter from '@/components/counter'
 
+let incrementButton: HTMLElement
+let decrementButton: HTMLElement
+let count: HTMLElement
+
 describe('Counter with no value in props', () => {
-  render(<Counter />)
-  user.setup()
-  const incrementButton = screen.getByRole('button', { name: 'Increment' })
-  const decrementButton = screen.getByRole('button', { name: 'Decrement' })
+  beforeAll(() => {
+    render(<Counter />)
+    user.setup()
+    incrementButton = screen.getByRole('button', { name: 'Increment' })
+    decrementButton = screen.getByRole('button', { name: 'Decrement' })
+    count = screen.getByRole('heading', { level: 2 })
+  })
+
+  afterAll(() => {
+    cleanup()
+  })
+
   test('should render the heading Count : 0', () => {
-    const count = screen.getByText('Count : 0')
-    expect(count).toBeInTheDocument()
+    expect(count).toHaveTextContent('Count : 0')
   })
   test('should render Count : 1 the button Increment', async () => {
     await user.click(incrementButton)
-    const count = screen.getByText('Count : 1')
-    expect(count).toBeInTheDocument()
+    expect(count).toHaveTextContent("Count : 1")
   })
   test('should render Count : 2 the button Increment', async () => {
     await user.click(incrementButton)
-    const count = screen.getByText('Count : 2')
-    expect(count).toBeInTheDocument()
+    expect(count).toHaveTextContent("Count : 2")
   })
   test('should render Count : 1 the button Decrement', async () => {
     await user.click(decrementButton)
-    const count = screen.getByText('Count : 1')
-    expect(count).toBeInTheDocument()
+    expect(count).toHaveTextContent("Count : 1")
   })
   test('should render Count : 0 the button Decrement', async () => {
     await user.click(decrementButton)
-    const count = screen.getByText('Count : 0')
-    expect(count).toBeInTheDocument()
+    expect(count).toHaveTextContent("Count : 0")
   })
   test('should render Count : 0 the button Decrement', async () => {
     await user.click(decrementButton)
-    const count = screen.getByText('Count : 0')
-    expect(count).toBeInTheDocument()
+    expect(count).toHaveTextContent("Count : 0")
   })
 })
 
 describe('Counter with value in props', () => {
-  render(<Counter initialCount={5} />)
-  user.setup()
+  beforeAll(() => {
+    render(<Counter initialCount={5} />)
+    count = screen.getByRole('heading', { level: 2 })
+  })
+  afterAll(() => {
+    cleanup()
+  })
   test('should render the heading Count : 5', () => {
-    const count = screen.getByText('Count : 5')
-    expect(count).toBeInTheDocument()
+    expect(count).toHaveTextContent('Count : 5')
   })
 })
