@@ -84,6 +84,9 @@ devDependencies:
   eslint-plugin-react:
     specifier: ^7.33.2
     version: 7.33.2(eslint@8.52.0)
+  eslint-plugin-react-hooks:
+    specifier: ^4.6.0
+    version: 4.6.0(eslint@8.52.0)
   eslint-plugin-testing-library:
     specifier: ^6.1.0
     version: 6.1.0(eslint@8.52.0)(typescript@5.2.2)
