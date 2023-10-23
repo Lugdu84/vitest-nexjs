@@ -1,17 +1,26 @@
 import { useState } from "react"
 
+type UseCounterProps = {
+    initialCount?: number
+    initialStep?: number
+}
 
-export const useCounter = (initialCount = 0) => {
+export const useCounter = ({ initialCount = 0, initialStep = 1}: UseCounterProps = {}) => {
+    // const { initialCount = 0, initialStep = 1 } = config
     const [count, setCount] = useState(initialCount)
+    const [step, setStep] = useState(initialStep)
 
     const increment = () => {
-        setCount(count + 1)
+        setCount(count + step)
     }
 
     const decrement = () => {
-        if (count > 0)
-            setCount(count - 1)
+        setCount((count - step) > 0 ? count - step : 0)
     }
 
-    return { count, increment, decrement }
+    const updateStep = (newStep: string | number) => {
+        setStep(+newStep)
+    }
+
+    return { count, increment, decrement, step, updateStep }
 }

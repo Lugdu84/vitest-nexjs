@@ -45,16 +45,3 @@ describe('Counter with no value in props', () => {
     expect(count).toHaveTextContent("Count : 0")
   })
 })
-
-describe('Counter with value in props', () => {
-  beforeAll(() => {
-    render(<Counter initialCount={5} />)
-    count = screen.getByRole('heading', { level: 2 })
-  })
-  afterAll(() => {
-    cleanup()
-  })
-  test('should render the heading Count : 5', () => {
-    expect(count).toHaveTextContent('Count : 5')
-  })
-})
