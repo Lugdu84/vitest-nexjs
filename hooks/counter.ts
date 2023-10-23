@@ -6,7 +6,6 @@ type UseCounterProps = {
 }
 
 export const useCounter = ({ initialCount = 0, initialStep = 1}: UseCounterProps = {}) => {
-    // const { initialCount = 0, initialStep = 1 } = config
     const [count, setCount] = useState(initialCount)
     const [step, setStep] = useState(initialStep)
 
