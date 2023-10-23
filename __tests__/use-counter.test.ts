@@ -92,13 +92,13 @@ describe("change step", () => {
     const { result } = renderHook(useCounter)
     test("step should be 2 with number parameter 2", () => {
         act(() => {
-            result.current.updateStep(2)
+            result.current.updateStep("2")
         })
         expect(result.current.step).toBe(2)
     })
-    test("step should be 1 with string parameter 1", () => {
+    test("step should be 1 with parameter 0", () => {
         act(() => {
-            result.current.updateStep(1)
+            result.current.updateStep("0")
         })
         expect(result.current.step).toBe(1)
     })

@@ -17,8 +17,7 @@ export const useCounter = ({ initialCount = 0, initialStep = 1}: UseCounterProps
         setCount((count - step) > 0 ? count - step : 0)
     }
 
-    const updateStep = (newStep: string | number) => {
-
+    const updateStep = (newStep: string) => {
         setStep(+newStep > 0 ? +newStep : 1)
     }
 
