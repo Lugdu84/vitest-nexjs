@@ -1,13 +1,16 @@
 import Counter from '@/components/counter'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex items-center gap-3 p-24">
       <Link href={"/"}>
-        Home Page
+        <Button variant={"ghost"}>Home Page</Button>
       </Link>
-      <Counter />
+      <Link href={"/counter"}>
+        <Button variant={"ghost"}>Counter Page</Button>
+      </Link>
     </main>
   )
 }
