@@ -14,7 +14,7 @@ export default function Counter( { initialCount } : TypeCounterProps) {
             <h2 className='text-2xl'>Count : {count}</h2>
             <div className='flex gap-2'>
                 <label htmlFor="step">Step</label>
-                <input type="number" name="step" value={step} onChange={e => updateStep(Number(e.target.value))} />
+                <input type="number" name="step" value={step} onChange={e => updateStep(e.target.value)} min={1} />
             </div>
             
             <div className='flex gap-4'>

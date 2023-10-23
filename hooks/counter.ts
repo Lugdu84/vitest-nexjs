@@ -18,7 +18,8 @@ export const useCounter = ({ initialCount = 0, initialStep = 1}: UseCounterProps
     }
 
     const updateStep = (newStep: string | number) => {
-        setStep(+newStep)
+
+        setStep(+newStep > 0 ? +newStep : 1)
     }
 
     return { count, increment, decrement, step, updateStep }
