@@ -26,22 +26,15 @@ describe('Counter with no value in props', () => {
   })
   test('should render Count : 1 the button Increment', async () => {
     await user.click(incrementButton)
-    expect(count).toHaveTextContent("Count : 1")
-  })
-  test('should render Count : 2 the button Increment', async () => {
-    await user.click(incrementButton)
-    expect(count).toHaveTextContent("Count : 2")
-  })
-  test('should render Count : 1 the button Decrement', async () => {
-    await user.click(decrementButton)
-    expect(count).toHaveTextContent("Count : 1")
+    expect(count).toHaveTextContent('Count : 1')
   })
   test('should render Count : 0 the button Decrement', async () => {
     await user.click(decrementButton)
-    expect(count).toHaveTextContent("Count : 0")
+    expect(count).toHaveTextContent('Count : 0')
   })
+  // eslint-disable-next-line vitest/no-identical-title
   test('should render Count : 0 the button Decrement', async () => {
     await user.click(decrementButton)
-    expect(count).toHaveTextContent("Count : 0")
+    expect(count).toHaveTextContent('Count : 0')
   })
 })

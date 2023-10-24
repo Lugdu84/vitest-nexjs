@@ -1,25 +1,28 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 type UseCounterProps = {
-    initialCount?: number
-    initialStep?: number
+  initialCount?: number
+  initialStep?: number
 }
 
-export const useCounter = ({ initialCount = 0, initialStep = 1}: UseCounterProps = {}) => {
-    const [count, setCount] = useState(initialCount)
-    const [step, setStep] = useState(initialStep)
+export const useCounter = ({
+  initialCount = 0,
+  initialStep = 1,
+}: UseCounterProps = {}) => {
+  const [count, setCount] = useState(initialCount)
+  const [step, setStep] = useState(initialStep)
 
-    const increment = () => {
-        setCount(count + step)
-    }
+  const increment = () => {
+    setCount(count + step)
+  }
 
-    const decrement = () => {
-        setCount((count - step) > 0 ? count - step : 0)
-    }
+  const decrement = () => {
+    setCount(count - step > 0 ? count - step : 0)
+  }
 
-    const updateStep = (newStep: string) => {
-        setStep(+newStep > 0 ? +newStep : 1)
-    }
+  const updateStep = (newStep: string) => {
+    setStep(+newStep > 0 ? +newStep : 1)
+  }
 
-    return { count, increment, decrement, step, updateStep }
+  return { count, increment, decrement, step, updateStep }
 }

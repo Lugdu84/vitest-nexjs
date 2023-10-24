@@ -11,7 +11,7 @@
     "plugin:@next/next/recommended",
     "plugin:vitest/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:jsdom/recommended",
+    "plugin:jest-dom/recommended",
     "prettier"
   ],
   "overrides": [],
@@ -25,9 +25,9 @@
     "@typescript-eslint",
     "prettier",
     "testing-library",
-    "jest-dom",
     "vitest",
-    "react-hooks"
+    "react-hooks",
+    "jest-dom"
   ],
   "rules": {
     "prettier/prettier": [
