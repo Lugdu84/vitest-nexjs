@@ -1,8 +1,8 @@
 /* eslint-disable vitest/no-identical-title */
-import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
 import { describe, it, expect } from 'vitest'
 import Navbar from '../components/navbar'
+import { setup } from '@/test/setup'
 
 const user = {
   name: 'John Doe',
@@ -10,9 +10,9 @@ const user = {
 
 describe('Navbar', () => {
   it('should render the heading Inscription and Connexion if no User', () => {
-    render(<Navbar />)
-    const signupLink = screen.getByRole('link', { name: 'Inscription' })
-    const signinLink = screen.getByRole('link', { name: 'Connexion' })
+    const { getByRole } = setup(<Navbar />)
+    const signupLink = getByRole('link', { name: 'Inscription' })
+    const signinLink = getByRole('link', { name: 'Connexion' })
     expect(signupLink).toBeInTheDocument()
     expect(signinLink).toBeInTheDocument()
   })
@@ -20,9 +20,9 @@ describe('Navbar', () => {
 
 describe('Navbar', () => {
   it('should render the heading Profil and Deconnexion if user', () => {
-    render(<Navbar user={user} />)
-    const profilLink = screen.getByRole('link', { name: 'Profil' })
-    const logoutLink = screen.getByRole('link', { name: 'Deconnexion' })
+    const { getByRole } = setup(<Navbar user={user} />)
+    const profilLink = getByRole('link', { name: 'Profil' })
+    const logoutLink = getByRole('link', { name: 'Deconnexion' })
     expect(profilLink).toBeInTheDocument()
     expect(logoutLink).toBeInTheDocument()
   })

@@ -1,39 +1,29 @@
-import { test, expect, describe, afterAll, beforeAll } from 'vitest'
-import { render, screen, cleanup } from '@testing-library/react'
-import user from '@testing-library/user-event'
+import { test, expect, describe, beforeEach } from 'vitest'
+import { cleanup } from '@testing-library/react'
+import { setup } from '@/test/setup'
 import '@testing-library/jest-dom/vitest'
 import Counter from '@/components/counter'
 
-let incrementButton: HTMLElement
-let decrementButton: HTMLElement
-let count: HTMLElement
-
 describe('Counter with no value in props', () => {
-  beforeAll(() => {
-    render(<Counter />)
-    user.setup()
-    incrementButton = screen.getByRole('button', { name: 'Increment' })
-    decrementButton = screen.getByRole('button', { name: 'Decrement' })
-    count = screen.getByRole('heading', { level: 2 })
-  })
-
-  afterAll(() => {
+  beforeEach(() => {
     cleanup()
   })
-
-  test('should render the heading Count : 0', () => {
+  test('should render the heading Count : 0', async () => {
+    const { getByRole } = setup(<Counter />)
+    const count = getByRole('heading', { level: 2 })
     expect(count).toHaveTextContent('Count : 0')
   })
   test('should render Count : 1 the button Increment', async () => {
+    const { user, getByRole } = setup(<Counter />)
+    const incrementButton = getByRole('button', { name: 'Increment' })
+    const count = getByRole('heading', { level: 2 })
     await user.click(incrementButton)
     expect(count).toHaveTextContent('Count : 1')
   })
   test('should render Count : 0 the button Decrement', async () => {
-    await user.click(decrementButton)
-    expect(count).toHaveTextContent('Count : 0')
-  })
-  // eslint-disable-next-line vitest/no-identical-title
-  test('should render Count : 0 the button Decrement', async () => {
+    const { user, getByRole } = setup(<Counter />)
+    const decrementButton = getByRole('button', { name: 'Decrement' })
+    const count = getByRole('heading', { level: 2 })
     await user.click(decrementButton)
     expect(count).toHaveTextContent('Count : 0')
   })
